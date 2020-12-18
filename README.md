@@ -2,11 +2,14 @@
 
 ## users テーブル
 
-| Column   | Type    | Option      |
-| -------- | ------- | ----------- |
-| nickname | string  | null: false |
-| email    | string  | null: false |
-| password | string  | null: false |
+| Column             | Type    | Option      |
+| ------------------ | ------- | ----------- |
+| nickname           | string  | null: false |
+| email              | string  | null: false |
+| encrypted_password | string  | null: false |
+| name               | string  | null: false |
+| kana_name          | string  | null: false |
+| birthday           | integer | null: false |
 
 ### Association
 
@@ -15,12 +18,17 @@
 
 ## items テーブル
 
-| Column    | Type       | Option                         | 
-| --------- | ---------- | ------------------------------ |
-| item_name | string     | null: false                    |
-| nickname  | references | null: false ,foreign_key: true |
-| price     | integer    | null: false                    |
-| detail    | text       | null: false                    |
+| Column     | Type       | Option                         | 
+| ---------- | ---------- | ------------------------------ |
+| item       | string     | null: false                    |
+| user       | references | null: false ,foreign_key: true |
+| price      | integer    | null: false                    |
+| detail     | text       | null: false                    |
+| category   | integer    | null: false                    |
+| condition  | integer    | null: false                    |
+| shipping   | integer    | null: false                    |
+| prefecture | integer    | null: false                    |
+| days       | integer    | null: false                    |
 
 ### Association
 
@@ -29,11 +37,10 @@
 
 ## purchase テーブル
 
-| Column       | Type       | Option                         | 
-| ------------ | ---------- | ------------------------------ |
-| item_name    | references | null: false, foreign_key: true |
-| nickname     | references | null: false, foreign_key: true |
-| phone_number | integer    | null: false                    |
+| Column | Type       | Option                         | 
+| ------ | ---------- | ------------------------------ |
+| item   | references | null: false, foreign_key: true |
+| user   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -42,13 +49,14 @@
 - has_one :address
 
 ## address テーブル
-| Column        | Type    | Option      | 
-| ------------- | ------- | ----------- |
-| postal_code   | integer | null: false |
-| prefecture    | string  | null: false |
-| city          | string  | null: false |
-| house_number  | string  | null: false |
-| building_name | string  |             |
-
+| Column        | Type       | Option                         | 
+| ------------- | ---------- | ------------------------------ |
+| purchase      | references | null: false, foreign_key: true |
+| postal_code   | string     | null: false                    |
+| prefecture    | integer    | null: false                    |
+| city          | string     | null: false                    |
+| house_number  | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | integer    | null: false                    |
 
 - belongs_to :purchase
