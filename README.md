@@ -11,7 +11,7 @@
 | given_name         | string  | null: false               |
 | kana_family_name   | string  | null: false               |
 | kana_given_name    | string  | null: false               |
-| birthday           | integer | null: false               |
+| birthday           | date    | null: false               |
 
 ### Association
 
@@ -59,6 +59,6 @@
 | city          | string     | null: false                    |
 | house_number  | string     | null: false                    |
 | building_name | string     |                                |
-| phone_number  | integer    | null: false                    |
+| phone_number  | string     | null: false                    |
 
 - belongs_to :purchase
