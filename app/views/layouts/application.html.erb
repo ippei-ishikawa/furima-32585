@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Furima32585</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>Furima</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <script type="text/javascript" src="https://js.pay.jp/v1/"></script>
+  <%= stylesheet_link_tag 'application', media: 'all'%>
+  <%= javascript_pack_tag 'application' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
-</html>
+<body>
+  <%= yield %>
+</body>
+
+</html>      
+      <%# t.string :item,           null: false %>
+      <%# t.references :user, foreign_key: true %>
+      <%# t.integer :price,         null: false %>
+      <%# t.text :detail,           null: false %>
+      <%# t.integer :category_id,   null: false %>
+      <%# t.integer :condition_id,  null: false %>
+      <%# t.integer :shipping_id,   null: false %>
+      <%# t.integer :prefecture_id, null: false %>
+      <%# t.integer :day_id,        null: false %>
