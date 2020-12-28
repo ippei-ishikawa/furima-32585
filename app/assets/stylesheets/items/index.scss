@@ -261,6 +261,10 @@ a {
 }
 
 .sold-out {
+  display: none;
+}
+
+.sold-out [data-checked="true"] {
   position: absolute;
   top: 40%;
   width: 100%;
