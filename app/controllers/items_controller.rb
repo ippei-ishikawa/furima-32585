@@ -16,16 +16,14 @@ class ItemsController < ApplicationController
       redirect_to :root
     else
       render :new
-    end  
+    end
   end
 
   def show
   end
 
   def edit
-    unless user_signed_in? && current_user.id == @item.user_id
-      redirect_to :root
-    end  
+    redirect_to :root unless user_signed_in? && current_user.id == @item.user_id
   end
 
   def update
@@ -33,8 +31,8 @@ class ItemsController < ApplicationController
       redirect_to :root
     else
       render :edit
-    end    
-  end  
+    end
+  end
 
   private
 
@@ -45,5 +43,5 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
-  end  
+  end
 end
