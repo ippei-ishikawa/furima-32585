@@ -125,10 +125,9 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
-
       <li class='list'>
-        <%= link_to model: @item, url: items_path, method: :get, local: true do |f| %>
         <% @items.each do |item| %>
+        <%= link_to(item_path(item.id), method: :get, local: true) do |f| %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
@@ -159,7 +158,7 @@
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
-        <div class='item-info' id="dummy">
+        <div class='item-info'>
           <h3 class='item-name'>
             商品を出品してね！
           </h3>
