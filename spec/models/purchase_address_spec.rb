@@ -54,7 +54,7 @@ RSpec.describe PurchaseAddress, type: :model do
       expect(@purchase_address).to be_valid
     end
     it '電話番号が空だと保存できないこと' do
-      @purchase_address.phone_number = ''
+      @purchase_address.phone_number = nil
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank")
     end
@@ -67,6 +67,11 @@ RSpec.describe PurchaseAddress, type: :model do
       @purchase_address.phone_number = 'i9093838003'
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include('Phone number is invalid. Input half-width characters')
+    end
+    it 'tokenが空だと保存できないこと' do
+      @purchase_address.token = nil
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
     end
   end
 end
