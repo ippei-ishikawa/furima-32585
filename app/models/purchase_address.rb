@@ -8,12 +8,15 @@ class PurchaseAddress
     validates :city, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'is invalid. Input full-width characters' }
     validates :house_number, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'is invalid. Input full-width characters' }
     validates :phone_number, numericality: { only_integer: true, message: 'is invalid. Input half-width characters' }
+    validates :item_id
+    validates :user_id
     validates :token
   end
-
+  validates :phone_number, length: { maximum: 11 } 
   def save
     purchase = Purchase.create(item_id: item_id, user_id: user_id)
     Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, house_number: house_number,
                    building_name: building_name, phone_number: phone_number, purchase_id: purchase.id)
   end
 end
+ 

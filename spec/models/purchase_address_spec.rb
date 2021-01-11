@@ -68,10 +68,25 @@ RSpec.describe PurchaseAddress, type: :model do
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include('Phone number is invalid. Input half-width characters')
     end
+    it '電話番号が12文字以上だと保存できないこと' do
+      @purchase_address.phone_number = 909876543211
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
+    end
     it 'tokenが空だと保存できないこと' do
       @purchase_address.token = nil
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
+    end
+    it 'user_idが空だと保存できないこと' do
+      @purchase_address.user_id = nil
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("User can't be blank")
+    end
+    it 'item_idが空だと保存できないこと' do
+      @purchase_address.item_id = nil
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("Item can't be blank")
     end
   end
 end
